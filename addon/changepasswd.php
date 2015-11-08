@@ -7,7 +7,7 @@
  * License: GPL.
  * Site: https://montenegro-it.com
  * Email: contact@montenegro-it.com
-*/
+ */
 @set_time_limit(0);
 @error_reporting(E_NONE);
 @ini_set('display_errors', 0);
@@ -27,6 +27,10 @@ define("MYSQL_DB", "billmgr");
 define("MYSQL_USER", "root");
 
 class ChangePassword {
+
+    static public function clear_billmgrcache($table) {
+        exec('/usr/local/ispmgr/sbin/mgrctl -m billmgr drop.cache elid=' . $table);
+    }
 
     static public function connect_db() {
         $handle = fopen(BILLMGR_CONFIG, "r");
@@ -52,6 +56,7 @@ class ChangePassword {
         $query = $mysqli->query("UPDATE `user` SET `password`='" . $hash . "', `changepasswd`=NOW() WHERE `id`='" . $user_id . "'");
         if ($query) {
             $mysqli->query("COMMIT");
+            self::clear_billmgrcache('user');
         } else {
             $mysqli->query("ROLLBACK");
         }
@@ -117,9 +122,7 @@ class ChangePassword {
         $config = file_get_contents(PLUGIN_XML);
         preg_match_all("|<lang name=\"(.*)\">(.*)<msg name=\"newpassword_message\">(.*)</msg>(.*)<\/lang>|iUs", $config, $out_message, PREG_PATTERN_ORDER);
         preg_match_all("|<lang name=\"(.*)\">(.*)<msg name=\"newpassword_subject\">(.*)</msg>(.*)<\/lang>|iUs", $config, $out_subject, PREG_PATTERN_ORDER);
-        //получаем индекс массива по имени языка
         $key = array_search($lang, $out_message[1]);
-        //если файл языка из профиля отсутствует в списке языков плагина, то используем дефолтовый из настроек
         if (!$key) {
             $key = array_search(DEFAULT_LANG, $out_message[1]);
         }
