@@ -15,7 +15,7 @@
         <description lang="ru">Плагин предназначен для генерации нового пароля и отправки письма пользователю с данными в открытом виде</description>
         <description lang="en">The plugin is designed to change and send new password for user</description>
         <description lang="de">E-Mail Betref</description>
-        <url>https://montenengro-it.com/files/changepasswd.tar.gz</url>
+        <url>https://montenegro-it.com/files/changepasswd.tar.gz</url>
         <version>1.0</version>
         <lang>php</lang>
         <langver strict="no">5.2</langver>
