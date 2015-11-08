@@ -19,10 +19,10 @@
         <version>1.0</version>
         <lang>php</lang>
         <langver strict="no">5.2</langver>
-         <require>libxml</require>
         <require>simplexml</require>
+        <require>mysqli</require>
         <manager>billmgr</manager>
-        <author name="Denis Vorobev / Montenegro IT" contacts="contact@montenegro-it.com">Denis Vorobev</author>
+        <author name="Montenegro IT" contacts="contact@montenegro-it.com">Montenegro IT</author>
     </plugin>
     <handler name="changepasswd.php" type="xml">
         <func minlevel="7">changepasswd.action</func>
