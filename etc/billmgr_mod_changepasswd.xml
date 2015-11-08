@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ * Title: ChangePassword plugin.
+ * Version: 1.0.0 (8/Nov/2015)
+ * Author: Denis.
+ * License: GPL.
+ * Site: https://montenegro-it.com
+ * Email: contact@montenegro-it.com
+-->
+<mgrdata>
+    <plugin>
+        <name lang="ru">Изменение и отправка пароля</name>
+        <name lang="en">Change passwordChange passwordL</name>
+        <name lang="de">Passwort zurücksetzten</name>
+        <description lang="ru">Плагин предназначен для генерации нового пароля и отправки письма пользователю с данными в открытом виде</description>
+        <description lang="en">The plugin is designed to provide customers with the possibility of installing OneClickSSL certificates, using the previously received a voucher code</description>
+        <description lang="de">E-Mail Betref</description>
+        <url>http://download.ispsystem.com/plugins/plugins/oneclick.tar.gz</url>
+        <version>1.0</version>
+        <lang>php</lang>
+        <langver strict="no">5.2</langver>
+         <require>libxml</require>
+        <require>simplexml</require>
+        <manager>billmgr</manager>
+        <author name="Alexander Zvoznikov / ISPsystem" contacts="a.zvoznikov@ispsystem.com">Alexander Zvoznikov</author>
+    </plugin>
+    <handler name="changepasswd.php" type="xml">
+        <func minlevel="7">changepasswd.action</func>
+        <func minlevel="7">changepasswd.run</func>
+    </handler>
+    <metadata name="changepasswd.run" type="form">
+        <form helpurl="https://montenegro-it.com/plugins/changepasswd.html">
+            <page name="password">
+                <field name="changepasswd">
+                    <htmldata type="data" name="changepasswd"/>
+                </field>
+            </page>
+        </form>
+    </metadata>
+    <metadata name="user" type="list" key="id">
+        <toolbar>
+            <toolbtn func="changepasswd.run" type="edit" img="t-changepasswd" name="changepasswd" level="7"/>
+        </toolbar>
+    </metadata>
+    <lang name="ru">
+        <messages name="changepasswd.run">
+            <msg name="title">Смена пароля</msg>
+            <msg name="changepasswd">Сгенерировать новый пароль и выслать следующие данные клиенту:</msg> 
+            <msg name="newpassword_subject">Изменение пароля хостинг-аккаунта</msg>
+            <msg name="newpassword_message">Уважаемый(ая) __REALNAME__,
+
+Вам изменен пароль в биллинговой системе BILLmanager.
+
+Вход в BILLmanager : https://__PROJECTDOMAIN__/manager/billmgr
+Логин : __LOGIN__
+Пароль : __PASSWORD__
+			 
+Биллинговая система позволяет вам выполнять все необходимые действия по управлению вашим аккаунтом.
+Полную информацию о биллинге вы можете найти в документации, доступной из интерфейса BILLmanager.
+
+Основные возможности :
+
+- "Товары / Услуги" - в этой группе модулей вы можете заказывать новые товары и услуги,
+а также продлять их период действия.
+
+- "Платежи" - в этом модуле можно просматривать историю ваших платежей, а также инициировать
+новые платежи, предпочитаемым вами способом оплаты.
+
+- "Центр поддержки" - группа модулей для общения со службой поддержки. Здесь вы можете создавать
+новые запросы в службу поддержки, просматривать ответы, работать с архивом запросов.
+
+С уважением,
+Администрация</msg>
+        </messages>
+        <messages name="user">
+            <msg name="hint_changepasswd">Автоматическое изменение пароля аккаунта и отправка на контактный адрес регистрационных данных</msg>
+            <msg name="short_changepasswd">Смена пароля</msg>
+        </messages>
+    </lang>
+    <lang name="de">
+        <messages name="changepasswd.run">
+            <msg name="title">Passwort zurücksetzten</msg>
+            <msg name="changepasswd">Neues Passwort generieren und an den Kunden versenden:</msg> 
+            <msg name="newpassword_subject">E-Mail Betreff</msg>
+            <msg name="newpassword_message">Sehr geehrte(-r)  __REALNAME__,
+
+Sie haben ein neues Passwort bei  __PROJECTNAME__ angefordert.
+Die Zugangsdaten zum Control Panel lauten:
+Link : https://__PROJECTDOMAIN__/manager/billmgr
+Benutzername : __LOGIN__
+Passwort : __PASSWORD__
+			 
+In dem Control Panel haben Sie die Möglichkeit alle Einstellungen zum Ihren Account vorzunehmen.
+
+Die wichtigsten Möglichkeiten sind:
+
+- "Verträge / Dienstleistungen" - hier können Sie neue Dienstleistungen bestellen oder verlängern.
+
+- "Zahlungen" - hier können die bereits getätigten Zahlungen eingesehen und neue Bestellungen getätigt werden.
+
+- "Support Center" - ein ticketbasierendes Supportsystem zur nachvollziehbaren Kommunikation mit unseren Support Mitarbeitern.
+
+
+Mit freundlichen Grüßen,
+__PROJECTNAME__</msg>
+        </messages>
+        <messages name="user">
+            <msg name="hint_changepasswd">Passwort zurücksetzten und an die hinterlegte E-Mail Adresse versenden</msg>
+            <msg name="short_changepasswd">Passwort zurücksetzten</msg>
+        </messages>
+    </lang>
+    <lang name="en">
+        <messages name="changepasswd.run">
+            <msg name="title">Change password</msg>
+            <msg name="changepasswd">Сreate a new password and send it:</msg> 
+            <msg name="newpassword_subject">Change password</msg>
+            <msg name="newpassword_message">Dear Customer __REALNAME__,
+
+Welcome and thank you for your registration to the BILLmanager.
+
+BILLmanager access : https://__PROJECTDOMAIN__/manager/billmgr
+Login : __LOGIN__
+Password : __PASSWORD__
+			 
+Our billing software allows you to manage customers, products, invoices and payments easily.
+
+The BILLmanager interface provides the detailed information about the system.
+
+BILLmanager main features :
+
+- The set of modules Products/Services allows you to order new products and services and to set 
+the renewal periods any time you want.
+
+- Using the module Payments you are able to make payments directly from your account and select the 
+method that best fits your needs. The module also keeps a full history of your financial transactions.
+
+- Support center ( = trouble tickets) for technical support can be submitted using the modules Support Service. 
+The modules also allows you to track support history.
+
+Best Regards</msg>
+        </messages>
+        <messages name="user">
+            <msg name="hint_changepasswd">Automatic password change account and sent to the contact address registration information</msg>
+            <msg name="short_changepasswd">Change password</msg>
+        </messages>
+    </lang>
+</mgrdata>
