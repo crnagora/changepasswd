@@ -8,21 +8,21 @@
  * Email: contact@montenegro-it.com
 -->
 <mgrdata>
-    <plugin>
+    <plugin name="changepasswd" version="1.0.0">
         <name lang="ru">Изменение и отправка пароля</name>
-        <name lang="en">Change passwordChange passwordL</name>
+        <name lang="en">Change password</name>
         <name lang="de">Passwort zurücksetzten</name>
         <description lang="ru">Плагин предназначен для генерации нового пароля и отправки письма пользователю с данными в открытом виде</description>
-        <description lang="en">The plugin is designed to provide customers with the possibility of installing OneClickSSL certificates, using the previously received a voucher code</description>
+        <description lang="en">The plugin is designed to change and send new password for user</description>
         <description lang="de">E-Mail Betref</description>
-        <url>http://download.ispsystem.com/plugins/plugins/oneclick.tar.gz</url>
+        <url>https://montenengro-it.com/files/changepasswd.tar.gz</url>
         <version>1.0</version>
         <lang>php</lang>
         <langver strict="no">5.2</langver>
          <require>libxml</require>
         <require>simplexml</require>
         <manager>billmgr</manager>
-        <author name="Alexander Zvoznikov / ISPsystem" contacts="a.zvoznikov@ispsystem.com">Alexander Zvoznikov</author>
+        <author name="Denis Vorobev / Montenegro IT" contacts="contact@montenegro-it.com">Denis Vorobev</author>
     </plugin>
     <handler name="changepasswd.php" type="xml">
         <func minlevel="7">changepasswd.action</func>
